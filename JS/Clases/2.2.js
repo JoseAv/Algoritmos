@@ -21,16 +21,40 @@ class Producto {
 }
 
 class Carrito {
-    Prodctos = []
+    Productos = []
 
     AgregarProductos({ nombre, precio, cantidad }) {
         try {
-            this.Prodctos.push(new Producto({ nombre, precio, cantidad }));
+            this.Productos.push(new Producto({ nombre, precio, cantidad }));
         } catch {
             console.log('No se creo el producto')
         }
-
     }
 
-
+    Total() {
+        if (!this.Productos.length) {
+            console.log('NO HAY PRODUCTOS');
+            return
+        }
+        const total = [...this.Productos].reduce((acc, current) => {
+            return (current.precio * current.cantidad) + acc
+        }, 0)
+        this.Productos.forEach(element => {
+            console.log('Nombre: ', element.nombre)
+            console.log('Precio: ', element.precio)
+            console.log('Cantidad: ', element.cantidad)
+        });
+        console.log(total)
+        console.log('El total Es ', total)
+    }
 }
+
+let producto = { nombre: 'Limon', precio: 30, cantidad: 2 }
+let producto2 = { nombre: 'Manzana', precio: 12, cantidad: 3 }
+let producto3 = { nombre: 'Pera', precio: 333, cantidad: 5 }
+
+let newCarrito = new Carrito()
+newCarrito.AgregarProductos(producto)
+newCarrito.AgregarProductos(producto2)
+newCarrito.AgregarProductos(producto3)
+newCarrito.Total()

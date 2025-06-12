@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        class Reloj {
+            constructor() {
+
+                const ahora = new Date();
+                this.horas = String(ahora.getHours()).padStart(2, '0');
+                this.minutos = String(ahora.getMinutes()).padStart(2, '0');
+                this.segundos = String(ahora.getSeconds()).padStart(2, '0');
+                this.iniciar();
+            }
+
+            iniciar() {
+                console.log(new Date())
+                setInterval(() => {
+                    this.actualizarTiempo();
+                    this.mostrarHora()
+                }, 1000);
+            }
+
+            actualizarTiempo() {
+                this.segundos += 1
+                if (this.segundos >= 61) {
+                    this.segundos = 0
+                    this.minutos += 1
+                    if (this.minutos >= 61) {
+                        this.minutos = 0
+                        this.horas += 1
+                        this.horas === 24 ? this.horas = 0 : this.horas += 1
+                    }
+                }
+            }
+
+            mostrarHora() {
+                console.log(`${this.horas}: ${this.minutos}: ${this.segundos}`)
+            }
+        }
+
+        let NewReloj = new Reloj()
+        NewReloj.iniciar()
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+*,
+::after,
+::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(144, 103, 100);
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contendor {
+    height: 200px;
+    width: 200px;
+    background-color: azure;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenido {
+    height: 100px;
+    width: 100px;
+    border: 300px solid white;
+    background-color: black;
+
+}
+
+.show {
+    height: 10px;
+    width: 10px;
+    background-color: aqua;
+}

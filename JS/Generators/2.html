@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function* generadorPares() {
+            let contador = 0
+            let controller = true
+            do {
+                if (contador % 2 === 0) {
+                    yield contador
+                }
+
+                contador++
+            } while (controller);
+        }
+
+        const pares = generadorPares();
+        console.log(pares.next().value); // 0
+        console.log(pares.next().value); // 2
+        console.log(pares.next().value); // 4
+        console.log(pares.next().value);
+        console.log(pares.next().value);
+        console.log(pares.next().value);
+        console.log(pares.next().value);
+        console.log(pares.next().value);
+        // ... y así sucesivamente.
+
+    </script>
+
+
+</body>
+
+</html>

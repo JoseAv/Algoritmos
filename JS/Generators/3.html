@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function* generadorTransformador() {
+
+            let result = yield 'Escribe Algo'
+            let newMundo = yield result.toUpperCase()
+            yield newMundo.toUpperCase()
+
+        }
+
+        const transformador = generadorTransformador();
+        transformador.next(); // Inicia
+        console.log(transformador.next("hola").value); // "HOLA"
+        console.log(transformador.next("mundo").value); // "MUNDO"
+
+    </script>
+
+
+</body>
+
+</html>

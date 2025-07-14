@@ -1,0 +1,32 @@
+*,
+::after,
+::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    width: 300px;
+    margin: 0 auto;
+    background-color: #111;
+}
+
+ul {
+    position: relative;
+    color: white;
+}
+
+li {
+    list-style-type: none;
+    display: inline-block;
+    font-size: 20px;
+    padding: 10px;
+
+}
+
+ul :last-child {
+    background-color: darkblue;
+    color: rgb(155, 155, 155);
+}

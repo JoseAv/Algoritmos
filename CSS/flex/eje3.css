@@ -19,20 +19,25 @@ main {
 }
 
 img {
-    display: block;
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
+    /* Altura fija proporcional al ancho */
+    object-fit: cover;
+    /* Recorta la imagen sin deformarla */
+    border-radius: 8px;
 }
 
 .card-container {
     display: flex;
     flex-direction: column;
-    width: 300px;
-    justify-content: center;
-    align-items: center;
+    max-width: 300px;
+    /* Usa max-width en lugar de width */
+    width: 90%;
+    /* Adaptabilidad en móviles */
     border: 1px solid white;
     border-radius: 20px;
-
+    overflow: hidden;
+    /* Evita desbordamientos */
 }
 
 .card-image {
@@ -45,11 +50,7 @@ img {
 }
 
 .card-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     padding: 15px;
-
 }
 
 p {
@@ -58,5 +59,10 @@ p {
 }
 
 strong {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* Limita a 3 líneas */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     color: lightgrey;
 }

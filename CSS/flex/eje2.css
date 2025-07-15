@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+img {
+    width: 200px;
+    height: 3200px;
+}
+
+main {
+    max-width: 1600px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}

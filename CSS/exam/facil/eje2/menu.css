@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 10px;
+    list-style: none;
+    font-family: sans-serif;
+}
+
+
+
+body {
+    background-color: rgb(10, 10, 10);
+    color: white;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Header */
+
+.menu-container {
+    height: 50px;
+    padding: 10px 20px;
+    background: rgba(10, 10, 10, 0.04);
+    border-radius: 10px;
+    box-shadow: 0 4px 70px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.9px);
+    -webkit-backdrop-filter: blur(4.9px);
+    border: 1px solid rgba(10, 10, 10, 0.8);
+}
+
+.menu-ul {
+    font-size: 3rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-end;
+    gap: 60px;
+    align-items: center;
+}
+
+.menu-ul li {
+    font-size: 2.4rem;
+    cursor: pointer;
+    color: lightpink;
+    font-weight: bold;
+
+}
+
+
+/* Secction Hero */
+
+.container-seccion-hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.image-container {
+    height: 80vh;
+    grid-row-start: 1;
+    grid-column-start: 1;
+
+}
+
+h3 {
+    font-size: 20rem;
+    color: rgb(255, 171, 184);
+    font-weight: bold;
+}
+
+button {
+    padding: 20px;
+    font-size: 5rem;
+    min-width: 200px;
+    background-color: lightpink;
+    border-radius: 10px;
+    font-weight: bold;
+    width: 70%;
+}
+
+.container-text {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+    padding: 40px;
+
+}

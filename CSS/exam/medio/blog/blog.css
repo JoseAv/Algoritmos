@@ -1,7 +1,7 @@
 /* En html el root apunta al elemento que contiene todo en este caso el HTML en svg o xml apunta al svg que es su elemento raiz */
 :root {
-    --color-fondo: #2c2c2b;
-    --color-secundario: #fc6d23;
+    --color-fondo: rgb(44, 44, 43);
+    --color-secundario: rgb(252, 109, 35);
     --color-titulos: #fc6d23;
     --color-parrafos: #fefffb;
     --font-family: "Poppins", sans-serif;
@@ -27,10 +27,10 @@ img {
 
 
 body {
-    background-color: var(--color-fondo);
+    background: radial-gradient(100% 100% at 48% 51%, #161414 39%, transparent), radial-gradient(100% 100% at 17% 83%, #fc6d23 -100%, transparent), #1b253b;
     width: 97%;
     margin: 0 auto;
-    padding: 15px 20px;
+    padding: 15px 20px 0px;
 }
 
 h1 {
@@ -44,7 +44,7 @@ a {
 }
 
 .text-giant {
-    font-size: 8rem;
+    font-size: 7rem;
     color: var(--color-titulos);
     font-weight: 700;
     line-height: 1;
@@ -61,6 +61,19 @@ a {
     text-decoration: none;
 }
 
+@media (width <768px) {
+    .text-giant {
+        font-size: 5rem;
+    }
+
+    .text-normal {
+        font-size: 1rem;
+    }
+}
+
+
+
+
 p {
     font-size: 1.6rem;
     font-weight: 400;
@@ -69,4 +82,45 @@ p {
 
 .text {
     color: var(--color-parrafos);
+}
+
+.principal-button {
+    padding: 14px;
+    background-color: var(--color-titulos);
+    border-radius: 10px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.second-button {
+    border-radius: 1px solid var(--color-titulos);
+    padding: 14px;
+    border-radius: 10px;
+    background-color: transparent;
+    color: var(--color-parrafos);
+    border: 1px solid var(--color-secundario);
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.input {
+    padding: 7px;
+    font-size: 1.6rem;
+    max-width: 180px;
+    border-radius: 3px;
+}
+
+@media (width <768px) {
+    .input {
+        font-size: 1.2rem;
+        max-width: 120px;
+
+    }
+
+    .second-button {
+        padding: 5px;
+        font-size: 1.2;
+    }
 }

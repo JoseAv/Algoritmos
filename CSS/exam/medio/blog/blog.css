@@ -18,31 +18,55 @@
     box-sizing: border-box;
 }
 
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
 
 body {
     background-color: var(--color-fondo);
+    width: 97%;
+    margin: 0 auto;
+    padding: 15px 20px;
 }
 
 h1 {
     font-size: 2rem;
     font-weight: 700;
     color: var(--color-titulos);
+}
 
+a {
+    cursor: pointer;
 }
 
 .text-giant {
     font-size: 8rem;
+    color: var(--color-titulos);
+    font-weight: 700;
+    line-height: 1;
+    /* Evita espacio extra por line-height */
+    margin: 0;
+    /* Elimina márgenes predeterminados */
 }
 
 .text-normal {
-    font-size: 1.6rem;
-    font-weight: 400;
+    font-size: 2rem;
+    font-weight: 500;
     color: var(--color-parrafos);
     list-style: none;
+    text-decoration: none;
 }
 
 p {
     font-size: 1.6rem;
     font-weight: 400;
+    color: var(--color-parrafos);
+}
+
+.text {
     color: var(--color-parrafos);
 }

@@ -1,0 +1,90 @@
+/* GRILLA */
+
+.blog-container {
+    height: 100vh;
+    max-height: 100vh;
+    display: grid;
+    grid-template-areas:
+        "heater heater heater"
+        "main main main"
+        "footer footer footer"
+    ;
+    grid-template-rows: 45px minmax(0, 1fr) 150px;
+}
+
+/* HEADER */
+
+
+.container-header {
+    display: flex;
+    justify-content: space-between;
+    max-height: 20px;
+    grid-area: heater;
+}
+
+.logo {
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: var(--color-parrafos);
+    position: relative;
+    border-top: 3px double var(--color-secundario);
+}
+
+.container-links {
+    display: flex;
+    gap: 75px;
+    padding: 0 20px;
+}
+
+li:hover {
+    border-top: 2px solid var(--color-secundario);
+
+}
+
+/* MAIN */
+.container-main {
+    grid-area: main;
+    display: flex;
+    height: 100%;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+.main-image {
+    display: flex;
+    height: 100%;
+    width: 70%;
+    max-height: 100%;
+    border: 12px double var(--color-secundario);
+    max-width: 70%;
+}
+
+
+
+.capture-image {
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+}
+
+.main-text {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    gap: 90px;
+    margin: 30px;
+
+}
+
+.main-title {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* FOOTER */
+
+.container-footer {
+    grid-area: footer;
+    background-color: rgb(117, 117, 117);
+}

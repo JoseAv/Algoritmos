@@ -130,9 +130,9 @@ li:hover {
 @media (width <768px) {
     .main-text {
         max-width: 100%;
-        min-height: 100%;
+        min-height: 50%;
         justify-content: center;
-        gap: 50px;
+        gap: 30px;
     }
 }
 

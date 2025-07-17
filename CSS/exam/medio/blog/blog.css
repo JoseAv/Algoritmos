@@ -1,0 +1,48 @@
+/* En html el root apunta al elemento que contiene todo en este caso el HTML en svg o xml apunta al svg que es su elemento raiz */
+:root {
+    --color-fondo: #2c2c2b;
+    --color-secundario: #fc6d23;
+    --color-titulos: #fc6d23;
+    --color-parrafos: #fefffb;
+    --font-family: "Poppins", sans-serif;
+    font-size: 10px;
+}
+
+*,
+::after,
+::before {
+
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background-color: var(--color-fondo);
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-titulos);
+
+}
+
+.text-giant {
+    font-size: 8rem;
+}
+
+.text-normal {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--color-parrafos);
+    list-style: none;
+}
+
+p {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--color-parrafos);
+}

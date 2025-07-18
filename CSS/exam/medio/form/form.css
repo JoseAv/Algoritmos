@@ -1,0 +1,136 @@
+:root {
+    --font-color: #edf2f4;
+    --font-title: #d90429;
+    --font-subtitle: #ef233c;
+    --background: #2b2d42;
+    --card: #21233b;
+    --font-family-text: "Fira Sans", sans-serif;
+    --font-family-title: "Merienda", cursive;
+    font-size: 10px;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family-text);
+}
+
+body {
+    background-color: var(--background);
+    max-width: 1000px;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 30px 10px 0 10px;
+    color: var(--font-color);
+
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--card);
+    min-height: 100%;
+    gap: 30px;
+    padding: 50px;
+    max-width: 100%;
+}
+
+/* GENERALES */
+
+.text,
+label,
+p {
+    font-size: 2rem;
+    color: var(--font-color);
+}
+
+.title,
+h1 {
+    font-size: 4.3rem;
+    color: var(--font-subtitle);
+    font-family: var(--font-family-title);
+    font-weight: 700;
+}
+
+button {
+    border: 1px solid var(--font-subtitle);
+    background: none;
+    color: var(--font-color);
+    padding: 10px;
+    font-size: 1.6rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    cursor: pointer;
+}
+
+/* FORM */
+
+.form-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    justify-content: center;
+    align-content: center;
+    gap: 20px;
+}
+
+@media (width<768px) {
+    .form-main {
+        display: flex;
+        flex-direction: column;
+
+    }
+}
+
+
+
+.content-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.content-input input {
+    max-width: 85%;
+    padding: 7px 3px;
+    background-color: var(--background);
+    border: 1px solid var(--font-title);
+    border-radius: 5px;
+    -webkit-text-fill-color: #edf2f4cb;
+    font-size: 1.6rem;
+}
+
+
+.container-verify {
+    grid-column: 1/3;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.terminos {
+    color: var(--font-subtitle);
+}
+
+
+.container-button {
+    grid-row: 5/6;
+    grid-column: 1/3;
+}
+
+.container-button button {
+    min-width: 200px;
+}
+
+@media (width<768px) {
+    .container-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

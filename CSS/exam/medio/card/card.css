@@ -1,0 +1,111 @@
+:root {
+    --color-fondo: #000814;
+    /* fondo narutal o footers o secciones oscuras*/
+    --color-sub-fondo: #001d3d;
+    /*Hovers en botonoes o secciones laterales */
+    --color-card: 003566;
+    /* Card o elemetos que necesiten fondos tambien puede ser el color de los botones*/
+    --color-title: #ffd60a;
+    /* h1 o  h2 botenes de accion o elementos importantes no quieres que saturen*/
+    --color-text: #ffc300;
+    /* Iconos textos , parrafos enlaces, etc*/
+    font-size: 10px;
+}
+
+
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+
+}
+
+h2 {
+    font-size: 3.6rem;
+    color: var(--color-title);
+    font-weight: bold;
+}
+
+p {
+    font-size: 1.6rem;
+    color: var(--color-text);
+}
+
+/* 
+Aqui el boton pega un salto al texto ya que el content box 
+necesita un alto definido como no lo tiene entonces le suma el border pixel  al boton y esto crea los saltos */
+button {
+    padding: 10px 0;
+    font-size: 1.8rem;
+    font-weight: bold;
+    background-color: var(--color-title);
+    color: var(--color-fondo);
+    border: none;
+    max-width: 80%;
+    width: 250px;
+    cursor: pointer;
+    border: 1px solid var(--color-sub-fondo);
+    border-radius: 3px;
+}
+
+button:hover {
+    background-color: var(--color-fondo);
+    color: var(--color-title);
+    border: 1px solid var(--color-title);
+
+
+}
+
+
+img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px 10px 0 0;
+    transition: 0.5s ease-in-out;
+
+}
+
+.main-container-image {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+img:hover {
+    transform: rotateZ(-10deg);
+}
+
+
+body {
+    background-color: var(--color-fondo);
+    color: whitesmoke;
+    min-height: 100vh;
+    padding: 10px 20px;
+}
+
+.main-container {
+    display: grid;
+    width: 500px;
+    height: 700px;
+    margin: 0 auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: 40% 60%;
+    overflow: hidden;
+}
+
+
+.main-text {
+    background-color: var(--color-sub-fondo);
+    border-radius: 0px 0px 10px 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--color-title);
+}

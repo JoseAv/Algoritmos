@@ -1,0 +1,46 @@
+/* Contenido Princiap grid inicial */
+
+.principal-container {
+    display: grid;
+    width: 100%;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header header header"
+        "section main main "
+        "footer footer footer"
+    ;
+
+    padding: 15px 30px;
+}
+
+/* HEADER */
+
+.header-principal-container {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-container-icon-categories {
+    display: flex;
+}
+
+/* SECTION */
+
+.section-principal-container {
+    grid-area: section;
+}
+
+/* MAIN */
+
+.main-principal-container {
+    grid-area: main;
+}
+
+/* FOOTER */
+
+.footer-principal-container {
+    grid-area: footer;
+}

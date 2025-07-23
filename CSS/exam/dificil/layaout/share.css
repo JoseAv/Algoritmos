@@ -4,6 +4,8 @@
     --color-sub-text: #3e5c76;
     --color-title: #748cab;
     --color-card: #1d2d44;
+    --font-text: "Fira Sans", sans-serif;
+    --fonta-titles: "Bebas Neue", sans-serif;
     font-size: 10px;
 }
 
@@ -63,4 +65,32 @@ img {
     object-fit: cover;
     object-position: 50% 50%;
     display: block;
+}
+
+li {
+    list-style: none;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+@media (width < 1200px) {
+    li {
+        font-size: 1.8rem;
+
+    }
+
+}
+
+.icon {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+@media (width < 900px) {
+    .icon {
+        font-size: 1.8rem;
+
+    }
+
 }

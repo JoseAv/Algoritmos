@@ -1,8 +1,8 @@
 :root {
-    --color-fondo: #f3f3f3;
+    --color-fondo: #FFFFFF;
     --color-text: #0d1321;
     --color-sub-text: #3e5c76;
-    --color-title: #748cab;
+    --color-title: #1d2d44;
     --color-card: #1d2d44;
     --font-text: "Fira Sans", sans-serif;
     --fonta-titles: "Bebas Neue", sans-serif;
@@ -38,7 +38,7 @@ p {
 
 h2 {
     font-size: 3.2rem;
-    font-size: var(--color-title);
+    color: var(--color-title);
     font-family: "Fira Sans", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -46,7 +46,7 @@ h2 {
 
 h1 {
     font-size: 3.6rem;
-    font-size: var(--color-title);
+    color: var(--color-title);
     font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
     font-style: normal;

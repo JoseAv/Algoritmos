@@ -10,9 +10,9 @@
     min-height: 100vh;
     grid-template-rows: auto 1fr auto;
     grid-template-areas:
-        "header header header"
-        "section main main "
-        "footer footer footer"
+        "header header header header header"
+        "section main main main main "
+        "footer footer footer footer footer "
     ;
 
     padding: 0px 30px;
@@ -114,18 +114,17 @@
 .section-principal-container {
     grid-area: section;
     display: flex;
-    align-items: center;
     justify-content: end;
+    padding: 20px;
 }
 
 .section-subcontain {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    width: 50%;
-    height: auto;
-    border-top: 1px solid rgba(128, 128, 128, 0.562);
-    border-bottom: 1px solid rgba(128, 128, 128, 0.562);
+    gap: 7px;
+    height: 280px;
+    border-top: 1px solid rgba(128, 128, 128, 0.281);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.281);
     padding: 20px 0;
 }
 
@@ -144,7 +143,6 @@
 
 .section-container-categories {
     display: flex;
-    justify-content: flex-start;
     gap: 12px;
     padding: 5px;
 }
@@ -164,8 +162,96 @@
 
 }
 
+
+/* MAIN CARD */
+
+.main-container-grid {
+    display: grid;
+    width: 100%;
+    max-width: 1200px;
+    grid-template-columns: repeat(auto-fill, minmax(125px, 350px));
+    gap: 40px;
+    padding: 10px;
+    justify-content: center;
+    align-content: center;
+
+}
+
+.main-card {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+}
+
+
+.main-card-container-img {
+    width: 100%;
+    height: 70%;
+    overflow: hidden;
+    background-color: rgba(240, 240, 240, 0.884);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.main-card-container-img img {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    object-fit: contain;
+
+}
+
+.main-card-text {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+
+}
+
+.main-card-text span {
+    color: var(--color-sub-text);
+    font-size: 2.1rem;
+    font-weight: bold;
+}
+
+.main-card-text p {
+    font-size: 1.4rem;
+    display: -webkit-box;
+    /* Necesario para line-clamp */
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    /* Limita a 2 líneas */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+
+}
+
+
+
 /* FOOTER */
 
 .footer-principal-container {
     grid-area: footer;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+    padding-bottom: 20px;
+
+}
+
+.footer-principal-container p {
+    cursor: pointer;
+    font-size: 2rem;
+    font-family: var(--fonta-titles);
+    ;
 }

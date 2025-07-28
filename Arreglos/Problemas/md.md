@@ -53,10 +53,22 @@ Ejemplo: [1, 2, 3, 4] → [2, 4].
     Ejemplo: [1, 2, 3, 4], n=1 → [2, 3, 4, 1].
 
 2. Matriz transpuesta: Dada una matriz (arreglo 2D), transpón sus filas y columnas.
-    Ejemplo: [[1, 2], [3, 4]] → [[1, 3], [2, 4]].
+    Ejemplo: [
+        [1, 2], 
+        [3, 4]
+              ] →
+              
+               [
+                [1, 3], 
+                [2, 4]
+               ].
 
 3. Suma de diagonales: En una matriz cuadrada, suma las diagonales principal y secundaria.
-    Ejemplo: [[1, 2], [3, 4]] → Diagonal principal: 1 + 4 = 5, secundaria: 2 + 3 = 5.
+    Ejemplo: [
+        [1, 2, 3], //index 0,2
+        [4, 5, 6], // index 1,1
+        [7, 8, 9] // index 3,0
+        ] → Diagonal principal: 1 + 4 = 5, secundaria: 2 + 3 = 5.
 
 4. Frecuencia de elementos: Devuelve un objeto con la frecuencia de cada elemento.
     Ejemplo: ["a", "b", "a", "c"] → { a: 2, b: 1, c: 1 }.

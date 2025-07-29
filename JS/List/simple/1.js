@@ -20,6 +20,11 @@ class Lista {
         while (current.next !== null) {
             current = current.next
         }
+        // if (value === 3) {
+        //     current.next = this.head
+        //     return
+        // }
+
         current.next = new Nodo(value)
     }
 
@@ -108,13 +113,86 @@ class Lista {
     }
 
 
+    // ComprobateCicle() {
+    //     let current = this.head
+    //     if (!current)
+    //         return 'No hay datos'
+
+    //     let fast = current
+    //     let slow = current
+
+
+    //     while (fast !== null) {
+    //         fast = fast.next?.next
+    //         slow = slow.next
+    //         if (fast === slow) {
+    //             return true
+    //         }
+    //     }
+    //     return false
+    // }
+
+
+    DeleteDuplicate() {
+        //
+
+        if (!this.head)
+            return 'No hay datos'
+
+
+        let current = this.head
+        let newCurrent = null
+        let atras = null
+        while (newCurrent !== null) {
+
+            if (newCurrent.value === current.value && newCurrent !== current) {
+                if (atras.next.next) {
+                    atras.next = atras.next.next
+                }
+                atras.next = null
+            }
+
+            atras = current
+            current = current.next
+            if (current.next === null) {
+                newCurrent = newCurrent.next
+                current = this.head
+                this.atras = null
+
+            }
+        }
+
+
+        while (newCurrent !== null) {
+            console.log('No.', newCurrent.value)
+            newCurrent = newCurrent.next
+        }
+
+    }
+
 }
+
+
 
 
 const SimpleList = new Lista()
 SimpleList.AddNodo(1)
 SimpleList.AddNodo(2)
+SimpleList.AddNodo(1)
+
+SimpleList.AddNodo(1)
+
+SimpleList.AddNodo(1)
+
+
 SimpleList.AddNodo(3)
+SimpleList.AddNodo(3)
+SimpleList.AddNodo(3)
+
 SimpleList.AddNodo(4)
-SimpleList.ReverseNodos()
-SimpleList.ViewNodo()
+SimpleList.AddNodo(4)
+
+
+
+SimpleList.DeleteDuplicate()
+

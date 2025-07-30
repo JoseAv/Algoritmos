@@ -134,38 +134,30 @@ class Lista {
 
 
     DeleteDuplicate() {
-        //
-
         if (!this.head)
             return 'No hay datos'
 
-
         let current = this.head
-        let newCurrent = null
+        let newCurrent = this.head
         let atras = null
         while (newCurrent !== null) {
 
             if (newCurrent.value === current.value && newCurrent !== current) {
                 if (atras.next.next) {
                     atras.next = atras.next.next
+                } else {
+                    atras.next = null
                 }
-                atras.next = null
+
             }
 
             atras = current
             current = current.next
-            if (current.next === null) {
+            if (current === null) {
                 newCurrent = newCurrent.next
                 current = this.head
                 this.atras = null
-
             }
-        }
-
-
-        while (newCurrent !== null) {
-            console.log('No.', newCurrent.value)
-            newCurrent = newCurrent.next
         }
 
     }
@@ -177,20 +169,27 @@ class Lista {
 
 const SimpleList = new Lista()
 SimpleList.AddNodo(1)
+SimpleList.AddNodo(3)
+SimpleList.AddNodo(3)
+SimpleList.AddNodo(1)
 SimpleList.AddNodo(2)
 SimpleList.AddNodo(1)
-
+SimpleList.AddNodo(5)
+SimpleList.AddNodo(6)
+SimpleList.AddNodo(5)
 SimpleList.AddNodo(1)
 
-SimpleList.AddNodo(1)
+SimpleList.DeleteDuplicate()
+SimpleList.ViewNodo()
 
 
-SimpleList.AddNodo(3)
-SimpleList.AddNodo(3)
-SimpleList.AddNodo(3)
 
-SimpleList.AddNodo(4)
-SimpleList.AddNodo(4)
+
+
+
+
+
+
 
 
 

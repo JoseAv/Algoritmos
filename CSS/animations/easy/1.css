@@ -1,0 +1,38 @@
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    min-height: 100dvh;
+    background-color: slateblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+button {
+    padding: 10px 20px;
+    width: 200px;
+    border-radius: 5px;
+    font-size: large;
+    font-weight: bold;
+    color: lightblue;
+    background-color: #1e1e1e;
+    cursor: pointer;
+    transition: background-color 1s ease-in,
+        color 1s ease;
+
+    &:hover {
+        background-color: white;
+        color: lightpink;
+        transition: background-color 1.5s ease-in,
+            color 1.5s ease;
+
+    }
+}

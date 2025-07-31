@@ -3,3 +3,29 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+
+body {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    padding: 20px;
+    background-color: #1e1e1e;
+    min-height: 100dvh;
+}
+
+
+img {
+    display: block;
+    height: 400px;
+    width: 400px;
+    object-fit: contain;
+    border-radius: 20px;
+    transition: all 3s ease-in-out;
+
+    &:hover {
+        opacity: 0.1;
+        transform: scale(1.3);
+    }
+
+}

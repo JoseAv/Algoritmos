@@ -2,7 +2,7 @@
 
 export class Nodo {
 
-    constructor(value, position) {
+    constructor(value) {
         this.back = null
         this.next = null
         this.value = value
@@ -82,6 +82,25 @@ class DoubleList {
     }
 
 
+    InvertList() {
+        if (!this.head)
+            return 'No hay datos'
+
+        let current = this.head
+        while (current !== null) {
+            let temp = current.next
+            current.next = current.back
+            current.back = temp
+            if (!temp) {
+                this.head = current
+                return
+            }
+            current = temp
+
+
+        }
+    }
+
 
     ViewNodo() {
         if (!this.head)
@@ -108,19 +127,14 @@ NewList.AddNodo(1)
 NewList.AddNodo(2)
 NewList.AddNodo(3)
 NewList.AddNodo(4)
+
 NewList.AddNodo(5)
 NewList.AddNodo(6)
 NewList.AddNodoInAnyOne(4)
 NewList.AddNodoInAnyOne(4)
-
 NewList.AddNodoInAnyOne(4)
-
-
-
-
 NewList.DeleteAll(4)
-
-
+NewList.InvertList()
 NewList.ViewNodo()
 
 

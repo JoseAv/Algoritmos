@@ -12,15 +12,4 @@ const countWord = (text) => {
         return acc
     }, {})
 
-
-    console.log(res)
-
-
 }
-
-console.log(
-
-    countWord("Hola hola, mundo")
-
-
-)

@@ -77,3 +77,49 @@ img {
 
     }
 }
+
+/* 
+
+CIRCULO 
+
+*/
+
+
+.circule {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background-color: lemonchiffon;
+    transition: transform 1s ease,
+        border 1s ease;
+
+    cursor: pointer;
+    border: 15px solid purple;
+
+    &:hover {
+        transform: scale(1.5);
+        border: 10px solid rebeccapurple
+    }
+}
+
+.p2 {
+    padding: 30px;
+    color: black;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: lavenderblush;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: opacity 500ms ease;
+
+}
+
+.text {
+    font-size: 3rem;
+    color: white;
+    opacity: 0;
+}
+
+.p2:hover+.text {
+    opacity: 1;
+}

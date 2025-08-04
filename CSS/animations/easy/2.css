@@ -14,6 +14,35 @@ body {
     min-height: 100dvh;
 }
 
+.p {
+    font-size: 5rem;
+    color: white;
+    transition: color 1.5s ease;
+    font-weight: bold;
+
+    &:hover {
+        color: lightpink;
+    }
+
+    /* 
+    animation-name: changecolor;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both; */
+}
+
+/* @keyframes changecolor {
+    from {
+        color: white;
+
+    }
+
+    to {
+        color: lightpink;
+    }
+
+
+} */
 
 img {
     display: block;
@@ -21,11 +50,30 @@ img {
     width: 400px;
     object-fit: contain;
     border-radius: 20px;
-    transition: all 3s ease-in-out;
+    transition: transform 1s ease-in-out;
 
     &:hover {
         opacity: 0.1;
-        transform: scale(1.3);
+        /* transform: scale(1.3); */
+        transform: rotate(90deg);
     }
 
+}
+
+
+.div {
+    width: 200px;
+    height: 200px;
+    background-color: lightblue;
+    border-radius: 10px;
+    transition-property: transform;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in;
+
+    &:hover {
+        transform: translateX(200px);
+        transition-duration: 1s;
+        box-shadow: 5px 5px 5px 0px rgba(255, 255, 255, 0.685);
+
+    }
 }

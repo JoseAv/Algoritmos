@@ -1,0 +1,48 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(37, 37, 37)
+}
+
+.container {
+    width: 230px;
+    height: 504px;
+}
+
+
+.tarjeta {
+    border-radius: 20px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: all 55ms ease;
+}
+
+
+.front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    backface-visibility: hidden;
+}
+
+
+.back {
+    position: absolute;
+
+    transform: rotateY(-40deg);
+    width: 100%;
+    height: 100%;
+    background-color: lightgoldenrodyellow;
+    backface-visibility: hidden;
+}

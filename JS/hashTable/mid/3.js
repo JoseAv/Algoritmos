@@ -1,33 +1,37 @@
 function longestSubstringWithoutRepeating(s) {
-    let lastSeen = {};       // Guarda la última posición de cada carácter
-    let left = 0;            // Inicio de la ventana actual
-    let maxLength = 0;       // Longitud de la subcadena más larga
-    let startMax = 0;        // Índice inicial de la subcadena más larga
+    let lastSeen = {};   // Guardamos todos los valores la ultima ves que los vimos    
+    let left = 0;        // en donde esta empezando la cadena, esto cambia cada ves que vemos un numero repetido
+    let maxLength = 0;   // Este guarda la cantidad maxima de caracteres restando derecha - izquierda
+    let startMax = 0;    // Desde donde inicia, junto con max legth podemos saber cuantos caracteres son eje: 1 - 4
 
+
+    // cilo para el array
     for (let right = 0; right < s.length; right++) {
+        // elemento actual
         const currentChar = s[right];
 
-        // Si el carácter ya está en lastSeen y dentro de la ventana actual (left a right)
-        console.log(currentChar in lastSeen)
-        console.log(Object.hasOwn(lastSeen, currentChar))
-        if (currentChar in lastSeen && lastSeen[currentChar] >= left) {
-            left = lastSeen[currentChar] + 1; // Movemos left después del repetido
+        // verificamos si encontramos un elemento para actualizar la ultima ves
+        // actualizamos izquierda ya que si encontramos uno, la nueva cadena empieza desde donde se parte + 1 -> es decir el sigiente
+        if (currentChar in lastSeen) {
+            left = lastSeen[currentChar] + 1;
         }
 
-        lastSeen[currentChar] = right; // Actualizamos la última posición del carácter
+        // aqui actuailizamos o arreglamos, en el anterior solo actualizamos left
+        lastSeen[currentChar] = right;
 
-        // Verificamos si la subcadena actual es la más larga hasta ahora
+
+        // aqui hacemos una cuenta para saber si la cadena que se forma es mas alta que la que tenemos guardada
         if (right - left + 1 > maxLength) {
+            // actualizamos datos
             maxLength = right - left + 1;
-            startMax = left; // Guardamos el inicio de la nueva subcadena más larga
+            startMax = left;
         }
     }
     console.log(lastSeen)
 
-
-    // Devolvemos la subcadena (desde startMax hasta startMax + maxLength)
+    // retonrmaos un subString desde el inicio que teniamos hasta ese inicio + la cantidad que encontramos de caracteres
     return s.substring(startMax, startMax + maxLength);
 }
 
 // Ejemplo de uso
-console.log(longestSubstringWithoutRepeating("bcdebabec")); // "cdeba" (longitud 5)
+console.log(longestSubstringWithoutRepeating("bcdebabec")); 

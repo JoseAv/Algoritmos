@@ -13,36 +13,56 @@ body {
     background-color: rgb(37, 37, 37)
 }
 
+
+/* DIMENCIONES DE LA CARD */
 .container {
-    width: 230px;
-    height: 504px;
+    width: 330px;
+    height: 400px;
 }
 
 
+/* ESTOS SON LOS ESTILOS DEL CONTENDOR DE LAS CARAS */
 .tarjeta {
-    border-radius: 20px;
     position: relative;
     width: 100%;
     height: 100%;
-    transition: all 55ms ease;
+    transition: all 550ms linear;
+    /* ESTO PRESERA LOS ESTILOS QUE TIENEN SUS HIJOS, YA QUE SI LA TARJETA ROTA NO RESPETA 
+    LAS TRASFORMACIONES DE LAS DEMAS */
+    transform-style: preserve-3d;
+
+}
+
+/* Movemos todo el contendor 180 grados*/
+
+.tarjeta:hover {
+    transform: rotateY(180deg);
 }
 
 
-.front {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: red;
-    backface-visibility: hidden;
-}
+/* Aplicamos a los 2 estilos las mismas propiedades*/
 
-
+.front,
 .back {
     position: absolute;
-
-    transform: rotateY(-40deg);
     width: 100%;
     height: 100%;
-    background-color: lightgoldenrodyellow;
     backface-visibility: hidden;
+    /* Oculta la parte trasera */
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.front {
+    background-color: red;
+}
+
+/* Esta tarjeta empieza ya girara inicialmente*/
+.back {
+    background-color: lightgoldenrodyellow;
+    transform: rotateY(180deg);
+    /* La parte trasera comienza girada -> el navegador interpreta que un elemento
+    de 180deg es la parte trasera por eso se gira previamente*/
 }

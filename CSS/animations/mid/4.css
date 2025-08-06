@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1e1e1e;
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.typing-container {
+    display: inline-block;
+    position: relative;
+}
+
+.typing-text {
+    color: white;
+    font-family: monospace;
+    font-size: 2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 5px solid white;
+    width: 0;
+    animation:
+        typing 8s linear infinite,
+        blink 1s step-end infinite;
+}
+
+@keyframes typing {
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: white
+    }
+}

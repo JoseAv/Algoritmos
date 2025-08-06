@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1e1e1e;
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.circule {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: relative;
+    animation-name: loading;
+    animation-timing-function: steps(4);
+    animation-timing-function: ease-in-out;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    box-shadow: 0 0 10px 5px rgba(237, 221, 83, 0.3);
+}
+
+@keyframes loading {
+    0% {
+        background: purple;
+    }
+
+    50% {
+        background: plum;
+    }
+
+    75% {
+        background: red;
+    }
+
+    100% {
+        background: lightgreen;
+    }
+
+}
+
+.center {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #1e1e1e;
+    border-radius: 50%;
+    top: 50px;
+    left: 50px;
+}

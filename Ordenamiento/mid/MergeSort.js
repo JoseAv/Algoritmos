@@ -6,33 +6,33 @@ const MergeSort = (array) => {
     const left = array.slice(0, div)
     const right = array.slice(div, array.length)
     const arrayLeft = MergeSort(left)
-    const arrayRigth = MergeSort(right)
-    return MergeArray(arrayLeft, arrayRigth)
+    const arrayRight = MergeSort(right)
+    return MergeArray(arrayLeft, arrayRight)
 }
 
-const MergeArray = (left, rigth) => {
+const MergeArray = (left, right) => {
     const newArray = []
 
-    while (left.length > 0 && rigth.length > 0) {
-        if (left[0] > rigth[0]) {
-            newArray.push(rigth[0])
-            rigth.shift()
+    while (left.length > 0 && right.length > 0) {
+        if (left[0] > right[0]) {
+            newArray.push(right[0])
+            right.shift()
         } else {
             newArray.push(left[0])
             left.shift()
         }
     }
-
     while (left.length > 0) {
         newArray.push(left[0])
         left.shift()
     }
-    while (rigth.length > 0) {
-        newArray.push(rigth[0])
-        rigth.shift()
+    while (right.length > 0) {
+        newArray.push(right[0])
+        right.shift()
     }
     return newArray
 }
+
 
 
 

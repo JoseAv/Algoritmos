@@ -34,6 +34,15 @@ CREATE TABLE "productos" (
 -- - Biografía (texto largo sin límite)
 -- - Código de empleado (exactamente 8 caracteres)
 
+    Create table empleados(
+id SERIAL PRIMARY KEY ,
+ full_name varchar(100),
+ iniciales char(3),
+ biografica text,
+ codigo char(8)
+);
+
+
 -- ### Ejercicio 1.3.3 - Tabla con Fechas y Tiempo
 -- Crea una tabla `eventos` con:
 -- - Fecha del evento
@@ -42,13 +51,44 @@ CREATE TABLE "productos" (
 -- - Duración en minutos
 -- - ¿Es evento de todo el día? (verdadero/falso)
 
+    CREATE TABLE evento(
+    id SERIAL PRIMARY KEY ,
+    fecha_evento date,
+    hora_inicio time,
+    fecha_creacion timestamp default now(),
+    duration int,
+    all_day char(1) default 'S' check (all_day in ('S', 'N') )
+);
+
 -- ### Ejercicio 1.3.4 - Array Simple
 -- Crea una tabla `estudiante` que tenga:
 -- - Nombre del estudiante
 -- - Materias (array de texto)
 -- - Calificaciones (array de enteros)
 
+    CREATE TABLE estudiante(
+    id SERIAL PRIMARY KEY ,
+    name varchar(150),
+    materias text[],
+    calificacions int[]
+);
+
+
+
 -- ### Ejercicio 1.3.5 - JSON Básico
 -- Crea una tabla `configuracion` con:
 -- - Nombre de la configuración
 -- - Valores (campo JSON) que contenga al menos: tema, idioma, notificaciones
+
+CREATE  TABLE configuracion(
+id SERIAL PRIMARY KEY ,
+name varchar(150),
+valores jsonb
+);
+
+alter table configuracion
+add constraint  validate_json_table
+check (valores ? 'tema' and valores ? 'idioma' and valores ? 'notificaciones');
+
+
+drop table  configuracion;

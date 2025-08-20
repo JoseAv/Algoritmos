@@ -80,7 +80,24 @@ class Arbol {
         return returnthis.findValue(nodo.left, ++nivel)(target)
     }
 
+    MinMax(nodo = this.raiz, values = { min: this.raiz.value, max: this.raiz.value }) {
+        if (!nodo)
+            return
+
+        if (nodo.value > values.max) {
+            values.max = nodo.value
+        }
+        if (nodo.value < values.min) {
+            values.min = nodo.value
+        }
+
+        this.MinMax(nodo.left, values)
+        this.MinMax(nodo.rigth, values)
+        return values
+    }
 }
+
+
 
 
 const ArbolBinary = new Arbol()
@@ -99,6 +116,10 @@ ArbolBinary.RunNodo()
 const SaveArbol = ArbolBinary.findValue()
 console.log(
     SaveArbol(1)
+)
+
+console.log(
+    ArbolBinary.MinMax()
 )
 
 // console.log(

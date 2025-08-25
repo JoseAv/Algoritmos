@@ -95,7 +95,18 @@ class Arbol {
         this.MinMax(nodo.rigth, values)
         return values
     }
+
+
+    DeleteArbol(nodo = this.raiz) {
+
+
+
+    }
+
+
+
 }
+
 
 
 

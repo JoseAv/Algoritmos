@@ -97,9 +97,65 @@ class Arbol {
     }
 
 
-    DeleteArbol(nodo = this.raiz) {
+    Delete(target) {
+        const nodo = this.SearchDeleteArbol(target)
+        if (!nodo) {
+            return 'No Existe este elemento'
+        }
+
+        console.log(nodo)
+        // const { nodoToFind,anterior} = nodo
+
+        // if(!nodoToFind.rigth && !nodoToFind.left){
+        //     return anterior.rigth.value === target ? anterior.rigth = null : anterior.left = null
+        // }
+
+        // if (!nodoToFind.left || !nodoToFind.rigth) {
+        //     if(nodoToFind.left){
+        //         return anterior.rigth.value === target ? anterior.rigth = nodoToFind.left : anterior.left = nodoToFind.left
+        //     }
+
+        //     return anterior.rigth.value === target ? anterior.rigth = nodoToFind.rigth : anterior.left = nodoToFind.rigth
+        // }
 
 
+        // const ValueReplace =  this.DeleteNodo(nodoToFind.rigth, nodoToFind.rigth)
+
+        // return anterior.rigth.value === target ? anterior.rigth.value = ValueReplace : anterior.left.value = ValueReplace
+
+    }
+
+    SearchDeleteArbol(target, nodo = this.raiz) {
+        // buscar Nodo
+        if (!nodo) {
+            return
+        }
+
+        const leftTree = this.SearchDeleteArbol(target, nodo.left, nodo)
+        const rigthTree = this.SearchDeleteArbol(target, nodo.rigth, nodo)
+
+        if (leftTree && leftTree.value === target) {
+            return leftTree
+        }
+
+        if (rigthTree && rigthTree.value === target) {
+            return rigthTree
+        }
+        //si el elemento no tiene hijos, cambiarlo con el anterior
+        return nodo
+    }
+
+    DeleteNodo(nodo, anterior = null) {
+
+        if (!nodo.left) {
+            if (anterior) {
+                anterior.left = null
+            }
+            return nodo.value
+        }
+
+        return this.DeleteNodo(nodo.left, anterior = nodo)
+        // tiene 2 hijos
 
     }
 
@@ -123,15 +179,23 @@ ArbolBinary.InsertNodo(-4)
 ArbolBinary.InsertNodo(5)
 ArbolBinary.InsertNodo(0)
 
-ArbolBinary.RunNodo()
 const SaveArbol = ArbolBinary.findValue()
 console.log(
     SaveArbol(1)
 )
 
+// console.log(
+//     ArbolBinary.MinMax()
+// )
+
+
+ArbolBinary.Delete(5)
+ArbolBinary.RunNodo()
 console.log(
-    ArbolBinary.MinMax()
+    SaveArbol(5)
 )
+
+
 
 // console.log(
 //     ArbolBinary.findValue(5)

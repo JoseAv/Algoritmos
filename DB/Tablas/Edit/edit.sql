@@ -146,3 +146,6 @@ SELECT con.*
 
 
 
+drop table clientes;
+drop table invetario;
+drop table trabajadores;

@@ -323,3 +323,34 @@ select nombre from estudiantes where nombre like '_%' AND nombre ~ '^[A-Z]';
 select concat(nombre,apellido) from profesores;
 
 -- Funciones Matematicas
+select round(avg(e.promedio), 1) from estudiantes as e;
+select abs(nota-80) from inscripciones;
+select round( sqrt(salario::numeric) ,2) AS SALARIOS from profesores;
+select round(avg(costo),1) from cursos;
+select pow(edad,2) from estudiantes;
+
+-- Funciones de flecha
+select date_part('year', fecha_ingreso) from estudiantes;
+select date_part('month', profesores.fecha_contratacion) from profesores;
+select date_part('day', cursos.fecha_inicio) from  cursos;
+select date_part('year', now()) - date_part('year', profesores.fecha_contratacion)  from profesores;
+select fecha_contratacion from profesores;
+
+SELECT * FROM profesores
+WHERE DATE_PART('year', AGE(CURRENT_DATE, fecha_contratacion)) >= 5;
+
+-- Mix
+
+SELECT * FROM estudiantes
+WHERE carrera IN ('Ingeniería', 'Ingenieria') and promedio > 60
+order by promedio desc
+limit 1;
+
+select * from profesores as p
+where (p.nombre like 'Carmen' or p.nombre like 'Eduardo') and departament = 'Arquitectura'
+order by salario desc;
+
+select upper(nombre_curso), round(costo,2) from cursos
+where costo < 1600 and creditos > 3;
+
+

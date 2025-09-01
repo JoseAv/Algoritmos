@@ -37,6 +37,19 @@ Create table iscripciones(
     fecha_inscripcion date
 );
 
+alter table cursos
+add constraint fk_profesor_id FOREIGN key (profesor_id) references profesores(id);
+
+alter table inscripciones
+add constraint fk_curso_codigo
+foreign key (curso_codigo) references cursos(codigo);
+
+
+alter table inscripciones
+add constraint fk_estudiante_id
+foreign key (estudiante_id) references estudiantes(id);
+
+
 insert into  estudiantes
     (nombre,apellido,edad,carrera,fecha_ingreso,ciudad,promedio)
     values('Alejandra','Arauz',20,'Ingenieria',now(), 'Guatemala', 20.00);
@@ -352,5 +365,3 @@ order by salario desc;
 
 select upper(nombre_curso), round(costo,2) from cursos
 where costo < 1600 and creditos > 3;
-
-

@@ -300,6 +300,73 @@ select estudiante_id from inscripciones
     limit 1
     );
 
-select   departament from profesores
+
+select departament from profesores
     where fecha_contratacion is not null
     group by  departament;
+
+
+
+-- CTE -> Creamos una sub tabla y la llamamos departament_profesores
+with departament_profesores as (
+    -- campos a tener esta tabla
+    select nombre,
+           fecha_contratacion,
+           id,
+           departament,
+           -- Row_Number -> Crea un conteo independiente, podriamos decir que crea minitablas sobre que?
+           -- Over -> es Sobre que vamos a aplicar la numeracion
+           -- partition by -> Esto divide la tabla en mini tablas y con el row_number a cada uno se le crea una numeracion
+           -- y por ultimo podemos ordenarlas, en este caso la fecha por el mas antiguo
+           -- a este campo lo llamo conteo
+           row_number() over (partition by departament order by age(fecha_contratacion) desc ) as conteo
+    from profesores
+    where departament is not null and fecha_contratacion is not null
+)
+-- ahora la tabla que creamos al inicio la llamamos, podemos tambien llamar a los campos, y podemos usar conteo para liminar cuantos
+-- datos queremos ver en esta tabla
+select * from departament_profesores
+where conteo = 1;
+-- where  conteo =1;
+
+
+with departament_profesores as (
+    select nombre,
+           fecha_contratacion,
+           id,
+           departament,
+           row_number() over (partition by departament order by age(fecha_contratacion) desc ) as conteo
+    from profesores
+    where departament is not null and fecha_contratacion is not null
+)
+select * from departament_profesores;
+
+
+
+-- ids a afectarse
+-- 2
+-- 5
+-- 8
+-- 1
+-- 6
+-- 4
+select * from profesores where id=2;
+update  profesores
+    set salario=100 where id = 2;
+
+
+update profesores
+set salario = salario + ((salario * 15)/100)
+where id in (
+    with departament_profesores as (
+    select nombre,
+           fecha_contratacion,
+           id,
+           departament,
+           row_number() over (partition by departament order by age(fecha_contratacion) desc ) as conteo
+    from profesores
+    where departament is not null and fecha_contratacion is not null
+)
+select departament_profesores.id from departament_profesores
+where conteo = 1
+);

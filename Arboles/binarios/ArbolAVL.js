@@ -33,24 +33,27 @@ class arbol {
         if (value > temp.value && !temp.rigth) {
             temp.rigth = new this.nodo(value, temp)
             temp.height = this.caculatehigth(temp)
+            this.balanceTree(temp)
             return
         }
 
         if (value < temp.value && !temp.left) {
             temp.left = new this.nodo(value, temp)
             temp.height = this.caculatehigth(temp)
+            this.balanceTree(temp)
             return
         }
 
         if (value > temp.value) {
             this.runAndAddNewNodo(value, temp.rigth)
             temp.height = this.caculatehigth(temp)
+            this.balanceTree(temp)
             return
 
         } else {
             this.runAndAddNewNodo(value, temp.left)
             temp.height = this.caculatehigth(temp)
-            console.log(`Nodo ${temp.value} actualizado a altura: ${temp.height}`)
+            this.balanceTree(temp)
             return
         }
 
@@ -64,12 +67,44 @@ class arbol {
         return 1 + Math.max(this.knowHigth(nodo.rigth), this.knowHigth(nodo.left))
     }
 
+    calculateBalance(nodo) {
+        return nodo.rigth ? nodo.rigth.height : 0 - nodo.left ? nodo.left.height : 0
+    }
 
+    balanceTree(nodo) {
+        const balance = this.calculateBalance(nodo)
+        console.log(balance)
+
+        if (balance >= 2) {
+            const balanceSoon = this.calculateBalance(nodo.rigth)
+            console.log(balanceSoon)
+            if (balanceSoon > 0) {
+                this.simpleBalanceLeft(nodo)
+            }
+        }
+
+    }
+
+    simpleBalanceLeft(nodo) {
+        if (nodo === this.root) {
+            this.root = nodo.rigth
+        }
+        console.log(nodo.value)
+        const temp = nodo.rigth.left ?? null
+
+        // Change Fathers
+        nodo.rigth.parents = nodo.parents
+        nodo.parents = nodo.rigth
+        temp ? temp.parents = nodo : null
+
+        //  change values
+        nodo.rigth.left = nodo
+        nodo.rigth = temp
+    }
 
     runNodos(nodo = this.root) {
         if (!nodo)
             return
-
         this.runNodos(nodo.left)
         console.log(`Value: ${nodo.value}, ALtura: ${nodo.height}`)
         this.runNodos(nodo.rigth)
@@ -80,9 +115,8 @@ class arbol {
 
 const ArbolAvl = new arbol(nodo)
 ArbolAvl.addNodo(5)
-ArbolAvl.addNodo(3)
-ArbolAvl.addNodo(2)
-ArbolAvl.addNodo(1)
+ArbolAvl.addNodo(6)
+ArbolAvl.addNodo(7)
 
 // ArbolAvl.addNodo(6)
 // ArbolAvl.addNodo(7)

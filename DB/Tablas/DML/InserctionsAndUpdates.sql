@@ -370,3 +370,101 @@ where id in (
 select departament_profesores.id from departament_profesores
 where conteo = 1
 );
+
+
+with estudiates_promedio as(
+    select nombre,
+           carrera,
+           promedio,
+           row_number() over (partition by carrera order by carrera) as conteo
+           from estudiantes
+)
+select avg(promedio), carrera from estudiates_promedio
+where promedio is not null and carrera is not null
+group by carrera;
+
+
+
+WITH estudiantes_promedio AS (
+    SELECT carrera,
+           AVG(promedio) as promedioCarrera,
+           ROW_NUMBER() OVER (PARTITION BY carrera ORDER BY carrera) as conteo
+    FROM estudiantes
+    WHERE promedio IS NOT NULL AND carrera IS NOT NULL
+    GROUP BY carrera
+),
+estudiantes_menorPromedio AS (
+    SELECT es.carrera,
+           es.id,
+           es.nombre,
+           es.promedio
+    FROM estudiantes as es
+    WHERE es.carrera IN (SELECT carrera FROM estudiantes_promedio)
+    AND es.promedio < (
+        SELECT promedioCarrera
+        FROM estudiantes_promedio
+        WHERE estudiantes_promedio.carrera = es.carrera
+    )
+)
+SELECT * FROM estudiantes_menorPromedio;
+
+select * from estudiantes where nombre='Carlos';
+
+WITH estudiantes_promedio AS (
+    SELECT carrera,
+           AVG(promedio) as promedioCarrera,
+           ROW_NUMBER() OVER (PARTITION BY carrera ORDER BY carrera) as conteo
+    FROM estudiantes
+    WHERE promedio IS NOT NULL AND carrera IS NOT NULL
+    GROUP BY carrera
+),
+estudiantes_menorPromedio AS (
+    SELECT es.carrera,
+           es.id,
+           es.nombre,
+           es.promedio
+    FROM estudiantes as es
+    WHERE es.carrera IN (SELECT carrera FROM estudiantes_promedio)
+    AND es.promedio < (
+        SELECT promedioCarrera
+        FROM estudiantes_promedio
+        WHERE estudiantes_promedio.carrera = es.carrera
+    )
+)
+update  estudiantes
+set promedio = (select promedioCarrera from estudiantes_promedio where estudiantes_promedio.carrera = estudiantes.carrera)
+where id in (select id from estudiantes_menorPromedio);
+
+
+select * from profesores
+where date_part('year', fecha_contratacion) > 3;
+
+
+
+-- Extract usado con tipo y de donde sacmos la fecha, se puede usar tanto para consultar como para filtrar
+select * from profesores
+where extract(year from fecha_contratacion)>3;
+
+select extract(year from profesores.fecha_contratacion) from profesores;
+
+
+update profesores
+set salario = salario + (salario/100)*10
+where id in (
+    select id from profesores
+where extract(year from fecha_contratacion)>3
+    );
+
+-- 39
+
+
+update cursos
+set costo = costo + case
+    when profesor_id is null then -100
+    else 200
+    end;
+
+select * from   cursos where profesor_id is null;
+
+select * from inscripciones;
+

@@ -31,16 +31,14 @@ class arbol {
             return
 
         if (value > temp.value && !temp.rigth) {
-            temp.rigth = new this.nodo(value)
-            temp.rigth.parents = temp
-            temp.rigth.height = this.caculatehigth(temp.rigth)
+            temp.rigth = new this.nodo(value, temp)
+            temp.height = this.caculatehigth(temp)
             return
         }
 
         if (value < temp.value && !temp.left) {
-            temp.left = new this.nodo(value)
-            temp.left.parents = temp
-            temp.left.height = this.caculatehigth(temp.left)
+            temp.left = new this.nodo(value, temp)
+            temp.height = this.caculatehigth(temp)
             return
         }
 
@@ -52,6 +50,7 @@ class arbol {
         } else {
             this.runAndAddNewNodo(value, temp.left)
             temp.height = this.caculatehigth(temp)
+            console.log(`Nodo ${temp.value} actualizado a altura: ${temp.height}`)
             return
         }
 
@@ -81,17 +80,12 @@ class arbol {
 
 const ArbolAvl = new arbol(nodo)
 ArbolAvl.addNodo(5)
-ArbolAvl.addNodo(6)
 ArbolAvl.addNodo(3)
-ArbolAvl.addNodo(4)
-ArbolAvl.addNodo(7)
-ArbolAvl.addNodo(6.6)
+ArbolAvl.addNodo(2)
+ArbolAvl.addNodo(1)
 
-
-
-
-
+// ArbolAvl.addNodo(6)
+// ArbolAvl.addNodo(7)
+// ArbolAvl.addNodo(6.6)
 
 ArbolAvl.runNodos()
-
-"Hola"

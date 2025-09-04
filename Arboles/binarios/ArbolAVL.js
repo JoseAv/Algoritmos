@@ -68,7 +68,7 @@ class arbol {
     }
 
     calculateBalance(nodo) {
-        return (nodo.rigth ? nodo.rigth.height : 0) - (nodo.left ? nodo.left.height : 0)
+        return this.knowHigth(nodo.rigth) - this.knowHigth(nodo.left)
     }
 
 
@@ -82,8 +82,36 @@ class arbol {
             }
         }
 
+        if (balance <= 2) {
+            const balanceSoon = this.calculateBalance(nodo.left)
+            if (balanceSoon < 0) {
+                this.simpleBalanceRigth(nodo)
+            }
+        }
 
     }
+
+    simpleBalanceLeft(nodo) {
+        if (nodo = this.root) {
+            this.root = nodo.left
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
 
     simpleBalanceLeft(nodo) {
         if (nodo === this.root) {
@@ -118,6 +146,7 @@ class arbol {
             return
         this.runNodos(nodo.left)
         console.log(`Value: ${nodo.value}, ALtura: ${nodo.height}`)
+        console.log(this.calculateBalance(nodo))
         this.runNodos(nodo.rigth)
     }
 

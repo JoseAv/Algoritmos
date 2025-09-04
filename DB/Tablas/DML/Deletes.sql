@@ -101,5 +101,22 @@ rollback;
 
 -- Ejercicios Finales
 
+insert into estudiantes
+    (nombre, apellido, edad, carrera, fecha_ingreso, ciudad, promedio)
+    values ('Jose','Arana', 20,'Doctor',now(),'Guatemala',80)
+
+select * from cursos;
+
+insert into inscripciones
+    (estudiante_id, curso_codigo, nota, fecha_inscripcion)
+    values
+        (31, 503,80,now()),
+        (31, 603,81,now()),
+        (31, 104,82,now())
+
+
+
+select concat(upper(nombre),' ',(upper(apellido))) from estudiantes;
+
 
 

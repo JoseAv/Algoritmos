@@ -73,11 +73,9 @@ class arbol {
 
     balanceTree(nodo) {
         const balance = this.calculateBalance(nodo)
-        console.log(balance)
 
         if (balance >= 2) {
             const balanceSoon = this.calculateBalance(nodo.rigth)
-            console.log(balanceSoon)
             if (balanceSoon > 0) {
                 this.simpleBalanceLeft(nodo)
             }
@@ -96,10 +94,12 @@ class arbol {
         nodo.rigth.parents = nodo.parents
         nodo.parents = nodo.rigth
         temp ? temp.parents = nodo : null
-
         //  change values
         nodo.rigth.left = nodo
         nodo.rigth = temp
+        nodo.height = this.caculatehigth(nodo)
+
+
     }
 
     runNodos(nodo = this.root) {

@@ -468,3 +468,22 @@ select * from   cursos where profesor_id is null;
 
 select * from inscripciones;
 
+
+
+-- 41
+
+select * from profesores where salario > 20919935;
+
+update profesores
+set departament = 'Sin Asignar'
+where salario > 20919935
+
+-- 42
+
+select * from estudiantes where ciudad='Guatemala42';
+update estudiantes
+set ciudad = 'Guatemala42'
+where ciudad is null;
+
+
+

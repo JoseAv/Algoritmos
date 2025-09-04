@@ -73,3 +73,33 @@ select codigo from cursos where costo>2300
 
 delete from cursos where costo>2300;
 commit ;
+
+
+-- 49
+select * from inscripciones where extract(year from age(fecha_inscripcion)) > 2;
+
+-- 50
+
+
+select * from inscripciones where extract(MONTH from age(fecha_inscripcion)) > 4;
+
+select * from cursos where codigo not in (
+select curso_codigo from inscripciones where extract(MONTH from age(fecha_inscripcion)) <= 4);
+
+Begin;
+delete from inscripciones where curso_codigo in (
+select codigo from cursos where codigo not in (
+select curso_codigo from inscripciones where extract(MONTH from age(fecha_inscripcion)) <= 4)
+);
+
+delete from cursos where codigo not in ( select inscripciones.curso_codigo from inscripciones);
+
+commit;
+rollback;
+
+
+
+-- Ejercicios Finales
+
+
+

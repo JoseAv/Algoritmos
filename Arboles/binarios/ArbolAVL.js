@@ -59,15 +59,19 @@ class arbol {
 
     }
 
-    knowHigth(nodo) {
-        return nodo ? nodo.height : 0
-    }
 
     caculatehigth(nodo) {
         return 1 + Math.max(this.knowHigth(nodo.rigth), this.knowHigth(nodo.left))
     }
 
+
+    knowHigth(nodo) {
+        return nodo ? nodo.height : 0
+    }
+
     calculateBalance(nodo) {
+        if (!nodo)
+            return
         return this.knowHigth(nodo.rigth) - this.knowHigth(nodo.left)
     }
 
@@ -77,36 +81,44 @@ class arbol {
 
         if (balance >= 2) {
             const balanceSoon = this.calculateBalance(nodo.rigth)
-            if (balanceSoon > 0) {
+            if (balanceSoon && balanceSoon > 0) {
                 this.simpleBalanceLeft(nodo)
             }
         }
 
         if (balance <= 2) {
             const balanceSoon = this.calculateBalance(nodo.left)
-            if (balanceSoon < 0) {
+            if (balanceSoon && balanceSoon < 0) {
                 this.simpleBalanceRigth(nodo)
             }
         }
-
     }
 
-    simpleBalanceLeft(nodo) {
-        if (nodo = this.root) {
+    simpleBalanceRigth(nodo) {
+
+        if (nodo === this.root) {
             this.root = nodo.left
         }
 
+        const childrenrigth = nodo.left.rigth
+        const parensOrigintal = nodo.parents
+        const nodoLeft = nodo.left
+        // update padres
+        childrenrigth ? childrenrigth.parents = nodo : null
+        nodo.parents = nodoLeft
+        nodoLeft.parents = parensOrigintal
 
+        if (parensOrigintal && parensOrigintal.left === nodo) {
+            parensOrigintal.left = nodoLeft
+        } else if (parensOrigintal && parensOrigintal.rigth === nodo) {
+            parensOrigintal.rigth = nodoLeft
+        }
 
-
-
-
-
-
-
-
-
-
+        // update links
+        nodoLeft.rigth = nodo
+        nodo.left = childrenrigth
+        nodoLeft.height = this.caculatehigth(nodoLeft)
+        nodo.height = this.caculatehigth(nodo)
 
     }
 
@@ -118,7 +130,6 @@ class arbol {
             this.root = nodo.rigth
         }
 
-        // 
         const temp = nodo.rigth.left ?? null
         const newFather = nodo.rigth
 
@@ -127,7 +138,7 @@ class arbol {
         nodo.parents = nodo.rigth
         temp ? temp.parents = nodo : null
 
-        // Change soos of fathers
+        // Change childrens of parents
         if (nodo.parents && nodo.parents.left === nodo) {
             nodo.parents.left = nodo.rigth
         } else if (nodo.parents && nodo.parents.rigth === nodo) {
@@ -158,8 +169,10 @@ ArbolAvl.addNodo(5)
 ArbolAvl.addNodo(6)
 ArbolAvl.addNodo(7)
 
-// ArbolAvl.addNodo(6)
-// ArbolAvl.addNodo(7)
-// ArbolAvl.addNodo(6.6)
+ArbolAvl.addNodo(4)
+ArbolAvl.addNodo(3)
+ArbolAvl.addNodo(2)
+ArbolAvl.addNodo(1)
+
 
 ArbolAvl.runNodos()

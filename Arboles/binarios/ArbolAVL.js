@@ -182,10 +182,14 @@ class arbol {
 
         // update Values
 
+        newRoot.left = nodo.left
+        newRoot.rigth = nodo
+
         nodo.left.rigth = LeftNewRoot
         LeftNewRoot.parents = nodo
 
-        nodo.rigth.left
+        nodo.left = rigthNewRoot
+        rigthNewRoot.parens = nodo
 
 
     }

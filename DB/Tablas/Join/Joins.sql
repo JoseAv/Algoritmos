@@ -93,3 +93,33 @@ left join inscripciones
     on cursos.codigo = inscripciones.curso_codigo
 group by codigo, inscripciones.id;
 
+
+-- Full Outer JOIN
+
+--1
+select nombre_curso,nota, nombre, apellido, estudiantes.id from estudiantes
+full join inscripciones ins
+    on ins.estudiante_id = estudiantes.id
+full join cursos
+    on ins.curso_codigo = cursos.codigo;
+
+--2
+select * from profesores
+full join cursos
+    on profesores.id = cursos.profesor_id
+where profesores.id is not null ;
+
+
+--3
+select * from cursos
+full join inscripciones
+    on cursos.codigo = inscripciones.curso_codigo
+left join profesores
+    on profesores.id = cursos.profesor_id
+full join estudiantes
+    on inscripciones.estudiante_id = estudiantes.id;
+
+
+
+
+

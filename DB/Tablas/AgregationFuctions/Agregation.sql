@@ -39,3 +39,42 @@ select count(*), nombre_curso from inscripciones
         on cursos.codigo = curso_codigo
     group by nombre_curso;
 
+-- Agregation FUNCTIONS
+
+    -- HAVING
+
+--1
+select count(*), carrera from estudiantes
+group by carrera
+having count(*) > 3;
+
+--2
+select count(*), departament, avg(salario) from profesores
+group by departament
+having  avg(salario)> 10000
+
+--3
+select count(*), nombre,estudiantes.id from inscripciones
+    join estudiantes
+            on estudiantes.id = estudiante_id
+    group by  nombre, estudiantes.id
+    having count(*) > 2;
+
+--4
+select avg(promedio), carrera from estudiantes
+where carrera is not null
+group by carrera
+having  avg(promedio)>75
+;
+
+---5
+select count(*), profesor_id from cursos
+    group by profesor_id
+    having count(*) >= 2;
+
+select count(*), nombre,id from cursos
+    join profesores
+            on profesor_id = profesores.id
+    group by nombre,id
+    having count(*) >= 2;
+

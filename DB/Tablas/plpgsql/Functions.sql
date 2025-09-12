@@ -60,3 +60,86 @@ as $$
 $$ language plpgsql;
 
 select fullName('jose','arana');
+
+
+-- Parameters and return types;
+
+--1
+create or replace function Student_gpa(es_id int)
+returns  numeric(10,2)
+as $$
+    declare
+        prom numeric(10,2);
+
+    begin
+        select promedio into prom  from estudiantes where es_id = estudiantes.id;
+
+        return prom;
+    end;
+
+    $$ language plpgsql
+
+select Student_gpa(11);
+
+
+--2
+
+
+create or replace function count_inscripcion(cu_code int)
+returns int2
+as $$
+    declare
+        coun_enrollment int2;
+
+    begin
+        select count(*) into coun_enrollment from inscripciones where curso_codigo = cu_code;
+            return coun_enrollment;
+    end;
+
+    $$ language plpgsql
+
+select * from cursos
+
+select count_inscripcion(105);
+
+--3
+
+create or replace function profesores_cursos_ensenados(pr_id int4)
+returns int4
+as $$
+    declare
+         total int4;
+    begin
+        select count(*) into total from cursos where profesor_id = pr_id;
+        return  total;
+    end;
+
+    $$ language plpgsql;
+
+select * from profesores;
+
+select profesores_cursos_ensenados(11)
+
+
+--4
+create or replace function show_grade_current(note numeric(5,2))
+returns char(1)
+as $$
+    begin
+        if (note >90) then
+            return 'A';
+        else if ( note > 70) then
+            return 'B';
+        else if (note >60) then
+            return 'C';
+        else
+            return 'F';
+        end if;
+        end if;
+        end if;
+    end;
+    $$ language plpgsql
+
+
+
+select show_grade_current(70);

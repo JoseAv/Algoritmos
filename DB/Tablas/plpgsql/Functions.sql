@@ -143,3 +143,111 @@ as $$
 
 
 select show_grade_current(70);
+
+-- Mlti Statement Fuctions
+
+--1
+    create or replace function report_estudents(es_id int)
+    returns table (
+                    nombre varchar(100),
+                    apellido varchar(100),
+                    promedio numeric(5,2)
+                  )
+as $$
+        begin
+            return  query
+            select e.nombre,e.apellido,e.promedio from estudiantes as e where e.id = es_id;
+        end;
+
+$$ language plpgsql;
+
+drop function report_estudents;
+
+select * from estudiantes;
+
+select * from report_estudents(11);
+
+--2
+
+create or replace function calculate_deparment()
+returns table (
+            name_deparment varchar(200),
+            conteo int4,
+            promedio_salary numeric (10,2),
+            presupuesto int4
+              )
+as $$
+    begin
+
+        return query
+        select departament::varchar(200), count(*)::int4, round(avg(salario), 2)::numeric(10,2) , 1000::int4 from profesores
+        group by departament
+        order by  avg(salario) desc;
+
+    end;
+
+    $$ language plpgsql;
+
+drop function calculate_deparment()
+
+
+select * from calculate_deparment()
+--3
+
+create or replace function code_professores()
+returns table (
+            nombre_curso varchar(200),
+            nombre_profesor varchar(200),
+            costo numeric(10,2)
+              )
+as $$
+    begin
+        return  query
+            select nombre::VARCHAR(200),profesores.nombre::VARCHAR(200),cursos.costo::NUMERIC(10,2) from cursos
+            inner join profesores
+                on cursos.profesor_id = profesores.id;
+
+    end;
+
+    $$ language plpgsql;
+
+
+select * from code_professores()
+
+--4
+
+create or replace function GPA_students_clasifications()
+returns table (
+            nombre varchar(100),
+            apellido varchar(100),
+            promedio numeric(5,2),
+            clasificacion char(1)
+              )
+as $$
+        begin
+            return  query
+            select e.nombre,e.apellido,e.promedio::numeric(5,2), show_grade_current(e.promedio)::char(1) from estudiantes as e;
+        end;
+
+    $$ language plpgsql;
+
+select * from GPA_students_clasifications()
+
+--5
+create or replace function schedule_profesor(profe_id int)
+returns table(
+        name_course varchar(100),
+        fecha_inicio date,
+        costo numeric(10,2)
+             )
+as $$
+    begin
+        return query
+            select c.nombre_curso, c.fecha_inicio, c.costo from cursos as c where  c.profesor_id = profesor_id;
+    end;
+
+    $$ language plpgsql;
+
+select * from cursos
+
+select * from schedule_profesor(8)
